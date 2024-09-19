@@ -21,6 +21,24 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // Add the two dependencies below
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    runtimeOnly 'com.h2database:h2'
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed" //, "standardOut", "standardError"
+
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+
+        // Change from false to true
+        showStandardStreams = true
+    }
 }
 
 tasks.named('test') {
